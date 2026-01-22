@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Lindo San Blas - Estructura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .side-menu { transform: translateX(-100%); transition: 0.3s ease-in-out; }
+        .side-menu.active { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <div class="fixed top-0 left-0 z-50 p-4">
+        <button onclick="toggleMenu()" class="p-3 bg-white rounded-xl shadow-lg border border-slate-200 active:scale-95 transition-transform">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
+    <div id="menuLateral" class="side-menu fixed inset-y-0 left-0 z-[60] w-72 bg-white shadow-2xl flex flex-col p-6">
+        <div class="flex justify-between items-center mb-10 border-b pb-4">
+            <h2 class="font-black text-blue-600 text-xl italic">MENÚ GENERAL</h2>
+            <button onclick="toggleMenu()" class="text-2xl text-slate-400">✕</button>
+        </div>
+        <ul class="space-y-6 font-bold text-slate-700">
+            <li class="flex items-center gap-3 hover:text-blue-600 cursor-pointer" onclick="irA('nosotros')">🏠 Nosotros</li>
+            <li class="flex items-center gap-3 hover:text-blue-600 cursor-pointer" onclick="irA('domicilio')">🛵 Servicio a Domicilio</li>
+            <li class="flex items-center gap-3 hover:text-blue-600 cursor-pointer" onclick="irA('otros')">✨ Otros Servicios</li>
+            <li class="flex items-center gap-3 hover:text-blue-600 cursor-pointer" onclick="irA('espacio')">📍 Tu Espacio</li>
+            <li class="flex items-center gap-3 hover:text-blue-600 cursor-pointer" onclick="irA('oportunidades')">🤝 Oportunidades</li>
+            <li class="flex items-center gap-3 text-blue-600 border-t pt-4" onclick="irA('tecnologia')">⚡ Tecnología</li>
+        </ul>
+        <div class="mt-auto text-[10px] text-slate-400 text-center uppercase tracking-widest">
+            Albereda Residencial • El Salto, Jal.
+        </div>
+    </div>
+
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-[55] hidden" onclick="toggleMenu()"></div>
+
+    <main class="pt-24 px-6 max-w-lg mx-auto pb-10">
+        <div class="mb-10 text-center">
+            <div class="h-32 w-full bg-slate-200 rounded-2xl flex items-center justify-center border-2 border-dashed border-slate-300">
+                <span class="text-slate-400 font-bold uppercase tracking-widest text-xs">Espacio para Logo</span>
+            </div>
+            <p class="mt-4 text-[11px] text-slate-500 font-black uppercase tracking-[0.3em]">Mariscos Estilo Nayarit</p>
+        </div>
+        <div class="bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 p-8 space-y-8">
+            <div>
+                <h2 class="text-blue-700 font-black text-xl mb-4">1. Datos de tu Pedido</h2>
+                <div class="space-y-4">
+                    <input type="text" id="n" placeholder="Nombre para la mesa" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl outline-blue-600 font-bold">
+                    <input type="email" id="c" placeholder="Correo para tu recibo" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl outline-blue-600 font-bold">
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-blue-700 font-black text-xl mb-4">2. ¿Cómo deseas pagar?</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="flex flex-col items-center justify-center p-5 border-2 border-slate-100 rounded-[2rem] hover:bg-slate-50 transition-all active:scale-95">
+                        <span class="text-3xl mb-2">💵</span>
+                        <span class="text-[10px] font-black uppercase text-slate-500">Caja / Tarjeta</span>
+                    </button>
+                    <button class="flex flex-col items-center justify-center p-5 bg-blue-600 rounded-[2rem] shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all active:scale-95 text-white">
+                        <span class="text-3xl mb-2">₿</span>
+                        <span class="text-[10px] font-black uppercase">Criptoactivos</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleMenu() {
+            document.getElementById('menuLateral').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('hidden');
+        }
+        function irA(seccion) {
+            console.log("Navegando a: " + seccion);
+            toggleMenu();
+            // Aquí podrás añadir la lógica para mostrar cada sección
+        }
+    </script>
+</body>
+</html>
